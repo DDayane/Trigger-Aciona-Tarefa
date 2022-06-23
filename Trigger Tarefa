@@ -1,0 +1,8 @@
+trigger TarefaLead on Lead (after update) {
+    switch on trigger.operationtype {
+        when AFTER_UPDATE{
+            
+			TarefaLeadHandler.tafatulizacaostatus(Trigger.new, Trigger.oldMap);  
+        }
+    }
+}
