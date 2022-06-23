@@ -1,0 +1,26 @@
+@isTest
+public class TarefaLeadHandlerTest {
+	@isTest
+    public static void tafatulizacaostatus(){
+     List<Lead> leads= new List<Lead> ();  
+        Lead lds = new Lead();
+        lds.Id = '00Q8a00001qU2eCEAS';	
+   		lds.Status  = 'Interessado'; 
+            
+       	leads.add(lds); 
+        
+        Update leads;
+        
+        
+ 	List<Task> tarefa = new List<Task>();
+   	 	Task tassk = new Task();
+    	tassk.WhatId = leads[0].id;
+       	tassk.Status='In Progress';
+       	tassk.Priority='Normal';
+         
+        insert tarefa;
+        
+    List<Lead> ld = [SELECT id, status FROM Lead]; 
+ 	System.assertEquals('Interessado',lds.Status, 'não deu certo');
+    	}
+    }
