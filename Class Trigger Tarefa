@@ -1,0 +1,17 @@
+public with sharing class TarefaLeadHandler {
+ 	public static void tafatulizacaostatus (List<Lead> leadTaf, Map<Id, Lead> triggerOldMap ){
+        for(Lead ldf: leadTaf){
+             if(triggerOldMap.get(ldf.id).Status == 'Em Processo de Conversão' || ldf.Status == 'Interessado'){ 
+                    Task newTask = new Task(
+                    Subject = 'Tentar a conversão nos próximos 10 dias',
+                    Status = 'In Progress',
+                    ActivityDate = system.today()+10,
+                        
+                      WhoId = ldf.id
+                        );
+
+                        insert newTask;
+                    }
+                 }
+              }
+            }
